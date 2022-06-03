@@ -30,6 +30,7 @@ appointmentsRouter.post('/', (request, response) => {
     });
 
     return response.json(appointment);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     return response.status(400).json({ error: err.message });
   }
