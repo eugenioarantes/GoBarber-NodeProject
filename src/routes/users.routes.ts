@@ -16,7 +16,12 @@ usersRouter.post('/', async (request, response) => {
       password,
     });
 
-    return response.json(user);
+    const newUser = {
+      name,
+      email,
+    };
+
+    return response.json(newUser);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
