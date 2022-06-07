@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Router } from 'express';
 
 import AuthenticateUserService from '../services/AuthenticateUserService';
@@ -5,26 +6,20 @@ import AuthenticateUserService from '../services/AuthenticateUserService';
 const sessionsRouter = Router();
 
 sessionsRouter.post('/', async (request, response) => {
-  try {
-    const { email, password } = request.body;
+  const { email, password } = request.body;
 
-    const authenticateUser = new AuthenticateUserService();
+  const authenticateUser = new AuthenticateUserService();
 
-    const { user, token } = await authenticateUser.execute({
-      email,
-      password,
-    });
+  const { user, token } = await authenticateUser.execute({
+    email,
+    password,
+  });
 
-    const newUser = {
-      email,
-    };
+  const newUser = {
+    email,
+  };
 
-    return response.json({ newUser, token });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (err: any) {
-    return response.status(400).json({ error: err.message });
-  }
+  return response.json({ newUser, token });
 });
 
 export default sessionsRouter;
