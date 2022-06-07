@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { Router } from 'express';
 import multer from 'multer';
 import uploadConfig from '../config/upload';
@@ -40,18 +42,14 @@ usersRouter.patch(
   ensureAuthenticated,
   upload.single('avatar'),
   async (request, response) => {
-    try {
-      const updateUserAvatar = new UpdateUserAvatarService();
+    const updateUserAvatar = new UpdateUserAvatarService();
 
-      const user = await updateUserAvatar.execute({
-        user_id: request.user.id,
-        avatarFilename: request.file?.filename,
-      });
+    const user = await updateUserAvatar.execute({
+      user_id: request.user.id,
+      avatarFilename: request.file?.filename,
+    });
 
-      return response.json(user);
-    } catch (err: any) {
-      return response.status(400).json({ error: err.message });
-    }
+    return response.json(user);
   },
 );
 
