@@ -21,7 +21,7 @@
     "name": "mongo",
     "type": "mongodb",
     "host": "localhost",
-    "port": 49153,
+    "port": 49154,
     "database": "gobarber",
     "useUnifiedTopology": true,
     "entities":  [
